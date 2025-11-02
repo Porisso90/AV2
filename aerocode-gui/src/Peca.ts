@@ -10,7 +10,7 @@ export class Peca {
         this.nome = nome;
         this.tipo = tipo;
         this.fornecedor = fornecedor;
-        this.status = StatusPeca.EM_PRODUCAO; // Toda nova peça começa em produção
+        this.status = StatusPeca.EM_PRODUCAO;
     }
 
     /**
@@ -18,6 +18,5 @@ export class Peca {
      */
     atualizarStatus(novoStatus: StatusPeca): void {
         this.status = novoStatus;
-        // console.log removido
     }
 }

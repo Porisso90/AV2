@@ -1,31 +1,24 @@
-// src/components/FormAdicionarPeca.tsx
 import React, { useState } from 'react';
 import { TipoPeca } from '../enums';
 import { useAppContext } from '../context/AppContext';
-
-// Usamos os estilos de formulário que já criámos
 import '../pages/CadastroAeronavePage.css';
 
 interface FormAdicionarPecaProps {
   codigoAeronave: string;
-  onClose: () => void; // Função para fechar o modal
+  onClose: () => void;
 }
 
 export const FormAdicionarPeca = ({ codigoAeronave, onClose }: FormAdicionarPecaProps) => {
   const { adicionarPeca } = useAppContext();
-
-  // Estados locais para o formulário
   const [nome, setNome] = useState('');
   const [tipo, setTipo] = useState<TipoPeca>(TipoPeca.NACIONAL);
   const [fornecedor, setFornecedor] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Chama a função do contexto que criámos na Etapa 8.2
     adicionarPeca(codigoAeronave, { nome, tipo, fornecedor });
     
-    onClose(); // Fecha o modal após o envio
+    onClose();
   };
 
   return (

@@ -1,17 +1,12 @@
-// src/layout/MainLayout.tsx
-import React from 'react';
 import { NavLink, Outlet, useNavigate } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
 
 export const MainLayout = () => {
-  // 1. Obter a função de logout e o funcionário
   const { funcionarioLogado, fazerLogout } = useAppContext();
   const navigate = useNavigate();
-
-  // 2. Implementar a função de logout
   const handleLogout = () => {
     fazerLogout();
-    navigate('/'); // Redireciona para o login após sair
+    navigate('/');
   };
 
   return (
@@ -25,10 +20,8 @@ export const MainLayout = () => {
           <li>
             <NavLink to="/dashboard">Dashboard</NavLink>
           </li>
-          {/* Adicionaremos mais links aqui (ex: /admin/funcionarios) */}
         </ul>
         <div className="sidebar-footer">
-          {/* 3. Ligar a função ao clique do botão */}
           <button onClick={handleLogout}>Sair</button>
         </div>
       </nav>

@@ -1,36 +1,29 @@
-// src/components/FormAdicionarTeste.tsx
 import React, { useState } from 'react';
 import { useAppContext } from '../context/AppContext';
-import { TipoTeste, ResultadoTeste } from '../enums'; // Importamos os enums
-
-// Usamos os estilos de formulário que já criámos
+import { TipoTeste, ResultadoTeste } from '../enums';
 import '../pages/CadastroAeronavePage.css';
 
 interface FormAdicionarTesteProps {
   codigoAeronave: string;
-  onClose: () => void; // Função para fechar o modal
+  onClose: () => void;
 }
 
-// Criamos um tipo local para incluir a opção "Pendente"
 type ResultadoOuPendente = ResultadoTeste | 'PENDENTE';
 
 export const FormAdicionarTeste = ({ codigoAeronave, onClose }: FormAdicionarTesteProps) => {
   const { adicionarTeste } = useAppContext();
 
-  // Estados locais para o formulário
   const [tipo, setTipo] = useState<TipoTeste>(TipoTeste.ELETRICO);
   const [resultado, setResultado] = useState<ResultadoOuPendente>('PENDENTE');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Convertemos 'PENDENTE' de volta para 'null'
     const resultadoFinal = resultado === 'PENDENTE' ? null : resultado;
     
-    // Chama a função do contexto que criámos na Etapa 8.8
     adicionarTeste(codigoAeronave, { tipo, resultado: resultadoFinal });
     
-    onClose(); // Fecha o modal após o envio
+    onClose();
   };
 
   return (

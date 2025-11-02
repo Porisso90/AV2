@@ -1,9 +1,8 @@
-// src/Teste.ts
 import { TipoTeste, ResultadoTeste } from "./enums";
 
 export class Teste {
     tipo: TipoTeste;
-    resultado: ResultadoTeste | null = null; // O resultado começa como nulo
+    resultado: ResultadoTeste | null = null;
 
     constructor(tipo: TipoTeste) {
         this.tipo = tipo;

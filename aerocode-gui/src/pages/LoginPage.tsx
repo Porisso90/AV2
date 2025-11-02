@@ -1,4 +1,3 @@
-// src/pages/LoginPage.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
@@ -6,27 +5,22 @@ import { useAppContext } from '../context/AppContext';
 import './LoginPage.css';
 
 export const LoginPage = () => {
-  // Estados locais para controlar os campos do formulário
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
   const [error, setError] = useState('');
 
-  // Hooks do React e do Contexto
   const { fazerLogin } = useAppContext();
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault(); // Impede o recarregamento da página
-    setError(''); // Limpa erros antigos
+    e.preventDefault();
+    setError('');
 
-    // Tenta fazer o login usando a função do nosso Contexto
     const sucesso = fazerLogin(usuario, senha);
 
     if (sucesso) {
-      // Se for bem-sucedido, navega para o dashboard
       navigate('/dashboard');
     } else {
-      // Se falhar, mostra uma mensagem de erro
       setError('Usuário ou senha inválidos.');
     }
   };

@@ -1,9 +1,7 @@
-// src/Aeronave.ts
 import { TipoAeronave } from "./enums";
 import { Peca } from "./Peca";
 import { Etapa } from "./Etapa";
 import { Teste } from "./Teste";
-import { Funcionario } from "./Funcionario";
 
 export class Aeronave {
     codigo: string;
@@ -24,7 +22,6 @@ export class Aeronave {
     }
 
     finalizarEtapa(indexDaEtapa: number): { sucesso: boolean; mensagem: string } {
-        // Validação se o índice é válido
         if (indexDaEtapa < 0 || indexDaEtapa >= this.etapas.length) {
             return { sucesso: false, mensagem: "Índice de etapa inválido." };
         }
@@ -34,7 +31,6 @@ export class Aeronave {
             return { sucesso: false, mensagem: "Esta etapa já está concluída." };
         }
 
-        // Se for a primeira etapa (índice 0), pode ser finalizada sem restrições.
         if (indexDaEtapa > 0) {
             const etapaAnterior = this.etapas[indexDaEtapa - 1]!;
 
@@ -46,7 +42,6 @@ export class Aeronave {
             }
         }
 
-        // Se todas as validações passaram, finaliza a etapa.
         etapaAtual.finalizarEtapa();
         return { sucesso: true, mensagem: `Etapa '${etapaAtual.nome}' finalizada com sucesso!` };
     }

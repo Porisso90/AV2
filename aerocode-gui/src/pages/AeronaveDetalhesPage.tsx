@@ -1,14 +1,11 @@
-// src/pages/AeronaveDetalhesPage.tsx
-import React, { useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
+import { useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
 import { Modal } from '../components/Modal';
 import { FormAdicionarPeca } from '../components/FormAdicionarPeca';
 import { FormAdicionarEtapa } from '../components/FormAdicionarEtapa';
-// NOVO: Importar o Formulário de Teste
 import { FormAdicionarTeste } from '../components/FormAdicionarTeste';
 
-// Importar o CSS
 import './AeronaveDetalhesPage.css';
 
 export const AeronaveDetalhesPage = () => {
@@ -16,16 +13,12 @@ export const AeronaveDetalhesPage = () => {
   const { aeronaves, funcionarios } = useAppContext();
   const navigate = useNavigate();
 
-  // Estados dos Modais
   const [isModalPecaOpen, setIsModalPecaOpen] = useState(false);
   const [isModalEtapaOpen, setIsModalEtapaOpen] = useState(false);
-  // NOVO: Estado para controlar a visibilidade do modal de Teste
   const [isModalTesteOpen, setIsModalTesteOpen] = useState(false);
 
-  // 1. Encontrar a aeronave... (código sem alteração)
   const aeronave = aeronaves.find(a => a.codigo === codigo);
 
-  // 2. Se a aeronave não for encontrada... (código sem alteração)
   if (!aeronave) {
     return (
       <div className="detalhes-container">
@@ -40,7 +33,6 @@ export const AeronaveDetalhesPage = () => {
     );
   }
 
-  // 3. Se a aeronave for encontrada...
   return (
     <div className="detalhes-container">
       <header className="detalhes-header">
@@ -53,7 +45,6 @@ export const AeronaveDetalhesPage = () => {
         </button>
       </header>
 
-      {/* --- Secção de Detalhes (sem alteração) --- */}
       <div className="detalhes-card">
         <h3>Informações Principais</h3>
         <div className="info-grid">
@@ -63,7 +54,6 @@ export const AeronaveDetalhesPage = () => {
         </div>
       </div>
 
-      {/* --- Secção de Peças (sem alteração) --- */}
       <div className="detalhes-card">
         <div className="card-header-actions">
           <h3>Peças</h3>
@@ -87,7 +77,6 @@ export const AeronaveDetalhesPage = () => {
         )}
       </div>
 
-      {/* --- Secção de Etapas (sem alteração) --- */}
       <div className="detalhes-card">
         <div className="card-header-actions">
           <h3>Etapas de Produção</h3>
@@ -120,11 +109,9 @@ export const AeronaveDetalhesPage = () => {
         )}
       </div>
 
-      {/* --- Secção de Testes (Atualizada) --- */}
       <div className="detalhes-card">
         <div className="card-header-actions">
           <h3>Testes de Qualidade</h3>
-          {/* NOVO: Ligar o botão para abrir o modal de teste */}
           <button 
             className="button-primary-small"
             onClick={() => setIsModalTesteOpen(true)}
@@ -145,9 +132,6 @@ export const AeronaveDetalhesPage = () => {
         )}
       </div>
 
-      {/* --- Renderização dos Modais --- */}
-      
-      {/* Modal de Peça (existente) */}
       <Modal 
         titulo="Adicionar Nova Peça"
         isOpen={isModalPecaOpen}
@@ -159,7 +143,6 @@ export const AeronaveDetalhesPage = () => {
         />
       </Modal>
 
-      {/* Modal de Etapa (existente) */}
       <Modal 
         titulo="Adicionar Nova Etapa"
         isOpen={isModalEtapaOpen}
@@ -171,7 +154,6 @@ export const AeronaveDetalhesPage = () => {
         />
       </Modal>
 
-      {/* NOVO: Renderização do Modal de Teste */}
       <Modal 
         titulo="Adicionar Novo Teste"
         isOpen={isModalTesteOpen}

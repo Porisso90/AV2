@@ -1,5 +1,6 @@
+/* eslint-disable react-refresh/only-export-components */
 // src/context/AppContext.tsx
-import React, { createContext, useContext, useState, type ReactNode } from 'react';
+import { createContext, useContext, useState, type ReactNode } from 'react';
 import { Funcionario } from '../Funcionario';
 import { Aeronave } from '../Aeronave';
 // NOVO: Importar enums de Teste
@@ -65,7 +66,7 @@ const AppContext = createContext<IAppContext | undefined>(undefined);
 // --- 4. Criação do "Fornecedor" (Provider) ---
 export const AppProvider = ({ children }: { children: ReactNode }) => {
     
-    const [funcionarios, setFuncionarios] = useState<Funcionario[]>([adminInicial]);
+    const [funcionarios] = useState<Funcionario[]>([adminInicial]);
     const [aeronaves, setAeronaves] = useState<Aeronave[]>([]);
     const [funcionarioLogado, setFuncionarioLogado] = useState<Funcionario | null>(null);
 

@@ -1,29 +1,23 @@
-// src/components/FormAdicionarEtapa.tsx
 import React, { useState } from 'react';
 import { useAppContext } from '../context/AppContext';
-
-// Usamos os estilos de formulário que já criámos
 import '../pages/CadastroAeronavePage.css';
 
 interface FormAdicionarEtapaProps {
   codigoAeronave: string;
-  onClose: () => void; // Função para fechar o modal
+  onClose: () => void;
 }
 
 export const FormAdicionarEtapa = ({ codigoAeronave, onClose }: FormAdicionarEtapaProps) => {
   const { adicionarEtapa } = useAppContext();
-
-  // Estados locais para o formulário
   const [nome, setNome] = useState('');
   const [prazo, setPrazo] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Chama a função do contexto que criámos na Etapa 8.5
     adicionarEtapa(codigoAeronave, { nome, prazo });
     
-    onClose(); // Fecha o modal após o envio
+    onClose();
   };
 
   return (

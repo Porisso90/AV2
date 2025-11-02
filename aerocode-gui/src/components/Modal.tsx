@@ -1,17 +1,16 @@
-// src/components/Modal.tsx
-import React, { ReactNode } from 'react';
-import './Modal.css'; // Vamos criar este CSS a seguir
+import type { ReactNode } from 'react';
+import './Modal.css';
 
 interface ModalProps {
   titulo: string;
   isOpen: boolean;
   onClose: () => void;
-  children: ReactNode; // O conteúdo (ex: o formulário) virá aqui
+  children: ReactNode;
 }
 
 export const Modal = ({ titulo, isOpen, onClose, children }: ModalProps) => {
   if (!isOpen) {
-    return null; // Se não estiver aberto, não renderiza nada
+    return null;
   }
 
   return (

@@ -1,17 +1,14 @@
-// src/pages/CadastroAeronavePage.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TipoAeronave } from '../enums';
-import { useAppContext } from '../context/AppContext'; // 1. Importar o hook
+import { useAppContext } from '../context/AppContext';
 
-// Importar o CSS
+
 import './CadastroAeronavePage.css';
 
 export const CadastroAeronavePage = () => {
   const navigate = useNavigate();
-  const { adicionarAeronave } = useAppContext(); // 2. Obter a nova função
-
-  // Estados locais (sem alteração)
+  const { adicionarAeronave } = useAppContext();
   const [codigo, setCodigo] = useState('');
   const [modelo, setModelo] = useState('');
   const [tipo, setTipo] = useState<TipoAeronave>(TipoAeronave.COMERCIAL);
@@ -19,22 +16,18 @@ export const CadastroAeronavePage = () => {
   const [alcance, setAlcance] = useState('');
   const [error, setError] = useState('');
 
-  // 3. Implementar a lógica de submit
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
 
-    // Validar se os campos numéricos não estão vazios
     if (!capacidade || !alcance) {
         setError("Capacidade e Alcance são campos obrigatórios.");
         return;
     }
 
-    // Converter para número
     const capacidadeNum = parseInt(capacidade, 10);
     const alcanceNum = parseInt(alcance, 10);
 
-    // Chamar a função do contexto
     const resultado = adicionarAeronave({
         codigo,
         modelo,
@@ -44,16 +37,13 @@ export const CadastroAeronavePage = () => {
     });
 
     if (resultado.sucesso) {
-        // Se deu certo, volta para o dashboard
         navigate('/dashboard');
     } else {
-        // Se falhou (ex: código duplicado), mostra o erro
         setError(resultado.mensagem);
     }
   };
 
   return (
-    // O JSX (HTML) do formulário permanece exatamente o mesmo
     <div className="form-page-container">
       <header className="form-header">
         <h1>Cadastrar Nova Aeronave</h1>
@@ -66,7 +56,6 @@ export const CadastroAeronavePage = () => {
         {error && <p className="error-message">{error}</p>}
         
         <div className="form-grid">
-          {/* Coluna 1 */}
           <div className="form-group">
             <label htmlFor="codigo">Código Único</label>
             <input
@@ -99,7 +88,6 @@ export const CadastroAeronavePage = () => {
             </select>
           </div>
 
-          {/* Coluna 2 */}
           <div className="form-group">
             <label htmlFor="capacidade">Capacidade (Passageiros)</label>
             <input

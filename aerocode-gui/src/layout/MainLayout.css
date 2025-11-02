@@ -1,6 +1,3 @@
-/* src/layout/MainLayout.css */
-
-/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -14,11 +11,10 @@
   background-color: #f4f7fa;
 }
 
-/* --- Barra Lateral --- */
 .sidebar {
   width: 260px;
-  background-color: #1a202c; /* Cor escura */
-  color: #e2e8f0; /* Cor de texto clara */
+  background-color: #1a202c;
+  color: #e2e8f0;
   display: flex;
   flex-direction: column;
   padding: 1.5rem;
@@ -35,13 +31,12 @@
 
 .sidebar-header small {
   font-size: 0.9rem;
-  color: #a0aec0; /* Cinza claro */
+  color: #a0aec0;
 }
 
-/* --- Lista de Navegação --- */
 .nav-list {
   list-style-type: none;
-  flex-grow: 1; /* Empurra o footer para baixo */
+  flex-grow: 1;
 }
 
 .nav-list li {
@@ -58,21 +53,19 @@
 }
 
 .nav-list a:hover {
-  background-color: #2d3748; /* Fundo mais claro ao passar o rato */
+  background-color: #2d3748;
 }
 
-/* Estilo do link ativo (quando estamos nessa página) */
 .nav-list a.active {
-  background-color: #3182ce; /* Azul */
+  background-color: #3182ce;
   color: #fff;
   font-weight: 600;
 }
 
-/* --- Rodapé da Sidebar --- */
 .sidebar-footer button {
   width: 100%;
   padding: 0.75rem;
-  background-color: #e53e3e; /* Vermelho */
+  background-color: #e53e3e;
   color: white;
   border: none;
   border-radius: 6px;
@@ -84,9 +77,8 @@
   background-color: #c53030;
 }
 
-/* --- Área de Conteúdo --- */
 .content-area {
   flex-grow: 1;
   padding: 2rem;
-  overflow-y: auto; /* Permite scroll se o conteúdo for grande */
+  overflow-y: auto;
 }

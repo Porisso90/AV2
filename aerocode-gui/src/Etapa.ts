@@ -1,4 +1,3 @@
-// src/Etapa.ts
 import { StatusEtapa } from "./enums";
 import { Funcionario } from "./Funcionario";
 
@@ -6,7 +5,6 @@ export class Etapa {
     nome: string;
     prazo: string;
     status: StatusEtapa;
-    // Armazenamos apenas os IDs para facilitar a persistência
     responsaveisIds: string[] = [];
 
     constructor(nome: string, prazo: string) {

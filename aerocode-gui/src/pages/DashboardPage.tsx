@@ -1,16 +1,13 @@
 // src/pages/DashboardPage.tsx
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAppContext } from '../context/AppContext';
-import { Aeronave } from '../Aeronave'; // Importamos a classe para tipagem
+import { Aeronave } from '../Aeronave';
 
 import './DashboardPage.css';
 
 export const DashboardPage = () => {
-  // 1. Obter a lista de aeronaves do nosso estado global
   const { aeronaves } = useAppContext();
 
-  // 2. Função para renderizar cada aeronave como um "card"
   const renderAeronaveCard = (aeronave: Aeronave) => (
     <div className="aeronave-card" key={aeronave.codigo}>
       <div className="card-header">
@@ -23,7 +20,6 @@ export const DashboardPage = () => {
         <p><strong>Alcance:</strong> {aeronave.alcance} km</p>
       </div>
       <div className="card-footer">
-        {/* Este link ainda não funciona, mas vamos criá-lo na Etapa 8 */}
         <Link to={`/aeronave/${aeronave.codigo}`} className="card-button">
           Gerenciar
         </Link>
@@ -35,7 +31,6 @@ export const DashboardPage = () => {
     <div className="dashboard-container">
       <header className="dashboard-header">
         <h1>Dashboard de Produção</h1>
-        {/* Este link ainda não funciona, mas vamos criá-lo na Etapa 7 */}
         <Link to="/aeronaves/nova" className="button-primary">
           + Cadastrar Aeronave
         </Link>
